@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyWork1-lda</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="message">消息</string>
+    <string name="contact">联系人</string>
+    <string name="explore">发现</string>
+    <string name="me">我的</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -3,8 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/ContactFragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/ExploreFragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/MeFragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/MessageFragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/botton.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/contact_fragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/explore_fragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_contact.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_me.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_wei_xin.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/fragment_wei_xin2.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/fragment_wei_xin3.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/fragment_wei_xin4.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/me_fragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/message_fragment.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/top.xml" value="0.33697916666666666" />
       </map>
     </option>
@@ -14,5 +31,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.18541666666666667" />
+      </ProjectState>
+    </option>
   </component>
 </project>
