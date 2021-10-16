@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    // TODO
+
     public void hideFragmentAll(FragmentTransaction transaction){
 
         transaction.hide(messageFragment);
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         transaction.hide(meFragment);
     }
 
-    // TODO
+
     public void showFragmentOne(Fragment oneFragment){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         hideFragmentAll(transaction);

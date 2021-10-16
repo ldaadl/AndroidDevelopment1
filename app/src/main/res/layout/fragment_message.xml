@@ -5,12 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".FragmentMessage">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- 给recycleView增加的父布局,这个控件提供下拉功能 -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/message"
-        android:textSize="50sp"
-        android:gravity="center"/>
+        android:layout_height="wrap_content">
+    <!--  继承于recycleView，提供左划功能  -->
+        <com.example.mywork1_lda.SwipeRecyclerView
+            android:id="@+id/RVmessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

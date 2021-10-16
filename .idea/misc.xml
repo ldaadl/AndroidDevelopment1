@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/drawable/border1.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.17552083333333332" />
         <entry key="app/src/main/res/layout/ContactFragment.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/ExploreFragment.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/MeFragment.xml" value="0.18541666666666667" />
@@ -15,13 +18,16 @@
         <entry key="app/src/main/res/layout/fragment_contact.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/fragment_me.xml" value="0.18541666666666667" />
-        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_wei_xin.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/fragment_wei_xin2.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/fragment_wei_xin3.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/fragment_wei_xin4.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/item.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/item_message.xml" value="0.25" />
         <entry key="app/src/main/res/layout/me_fragment.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/message_fragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/pull_to_refresh.xml" value="0.33" />
         <entry key="app/src/main/res/layout/top.xml" value="0.33697916666666666" />
       </map>
     </option>
@@ -35,7 +41,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.18541666666666667" />
+        <option name="scale" value="0.1" />
       </ProjectState>
     </option>
   </component>
