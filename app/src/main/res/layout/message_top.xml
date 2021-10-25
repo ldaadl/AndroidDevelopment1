@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray">
+
+    <ImageView
+        android:id="@+id/message_return"
+        android:layout_width="23dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/return_button" />
+
+    <TextView
+        android:id="@+id/topWho"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="50sp" />
+
+    <ImageView
+        android:id="@+id/message_menu"
+        android:layout_width="23dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/menu" />
+
+</LinearLayout>

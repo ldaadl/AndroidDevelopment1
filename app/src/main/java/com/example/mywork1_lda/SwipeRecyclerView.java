@@ -61,6 +61,15 @@ public class SwipeRecyclerView extends RecyclerView {
         this.mRightListener = listener;
     }
 
+    /**
+     * 点击的监听事件
+     */
+    private OnClickListener mClickListener;
+
+    public void setOnClickListener(OnClickListener listener){
+        this.mClickListener = listener;
+    }
+
 
     public SwipeRecyclerView(Context context) {
         this(context, null);
@@ -127,6 +136,8 @@ public class SwipeRecyclerView extends RecyclerView {
                     AdapterOfMessAndCon.MyViewHolder viewHolder = (AdapterOfMessAndCon.MyViewHolder) getChildViewHolder(item);
                     mCurItemLayout = viewHolder.messageItem;
                     //找到具体元素（这与实际业务相关了~~）
+
+                    // 对点击删除按钮的监听
                     mLlHidden = (LinearLayout)mCurItemLayout.findViewById(R.id.ll_hidden);
                     mItemDelete = (LinearLayout)mCurItemLayout.findViewById(R.id.ll_hidden);
                     mItemDelete.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +146,16 @@ public class SwipeRecyclerView extends RecyclerView {
                            if (mRightListener != null){
                                 //删除
                                mRightListener.onRightClick(curSelectPosition, "");
+                            }
+                        }
+                    });
+
+                    // 对点击item的监听
+                    mCurItemLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (mClickListener != null){
+                                mClickListener.onClick(curSelectPosition, "");
                             }
                         }
                     });
@@ -219,5 +240,9 @@ public class SwipeRecyclerView extends RecyclerView {
 
     public interface OnRightClickListener{
         void onRightClick(int position, String id);
+    }
+
+    public interface OnClickListener{
+        void onClick(int position, String id);
     }
 }

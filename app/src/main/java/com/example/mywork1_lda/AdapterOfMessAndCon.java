@@ -2,6 +2,7 @@ package com.example.mywork1_lda;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ public class AdapterOfMessAndCon extends RecyclerView.Adapter<AdapterOfMessAndCo
     private String[] what;
 
     public AdapterOfMessAndCon(List<Map<String, Object>> data, Context context, int item, String[] what) {
+        Log.d("adapter","构造器");
         this.context = context;
         this.data = data;
         this.item = item;
@@ -43,7 +45,10 @@ public class AdapterOfMessAndCon extends RecyclerView.Adapter<AdapterOfMessAndCo
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // 将item渲染到recycleView的实际过程
+        Log.d("adapter","希望是多次调用"+viewType);
         itemView = LayoutInflater.from(context).inflate(this.item, parent, false);
+        // 每次渲染一个item就调用一次
+
         MyViewHolder myViewHolder = new MyViewHolder(itemView);
         return myViewHolder;
     }
@@ -56,6 +61,7 @@ public class AdapterOfMessAndCon extends RecyclerView.Adapter<AdapterOfMessAndCo
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Log.d("adapter","绑定");
         holder.message.setText(data.get(position).getOrDefault(what[1],"未知用户").toString());  //
         holder.who.setText(data.get(position).getOrDefault(what[0],"未知消息").toString());  // data.get(position).get(what[1]).toString()
         holder.headphoto.setImageResource(Integer.parseInt(data.get(position).getOrDefault(what[2],R.drawable.person1).toString()));  // Integer.parseInt(data.get(position).get(what[2]).toString())
@@ -65,6 +71,7 @@ public class AdapterOfMessAndCon extends RecyclerView.Adapter<AdapterOfMessAndCo
     // 数据的个数，遍历list会用到
     @Override
     public int getItemCount() {
+        Log.d("adapter","计数");
         return data.size();
     }
 
@@ -79,6 +86,7 @@ public class AdapterOfMessAndCon extends RecyclerView.Adapter<AdapterOfMessAndCo
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            Log.d("adapter","构造子类");
             headphoto = itemView.findViewById(R.id.headPhoto);
             who = itemView.findViewById(R.id.whoMessage);
             message = itemView.findViewById(R.id.message);

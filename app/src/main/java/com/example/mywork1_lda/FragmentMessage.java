@@ -1,11 +1,14 @@
 package com.example.mywork1_lda;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +45,7 @@ public class FragmentMessage extends Fragment {
         View view = inflater.inflate(R.layout.fragment_message, container, false);
 
         recyclerView = view.findViewById(R.id.RVmessage);
+        Log.d("mmm", String.valueOf(R.id.RVmessage));
         context = this.getActivity();
         data = new ArrayList<Map<String, Object>>();
 
@@ -94,6 +98,9 @@ public class FragmentMessage extends Fragment {
         });
 
         // 设置删除监听
+        // 针对整个recyclerView设置监听
+        // 为recyclerView提供监听到的对象和检测到监听后的具体解决方法
+        // 点击到那一个item也是有recyclerView进行判断
         recyclerView.setRightClickListener(new SwipeRecyclerView.OnRightClickListener() {
             @Override
             public void onRightClick(int position, String id) {
@@ -103,6 +110,21 @@ public class FragmentMessage extends Fragment {
                 //    myAdapter.notifyItemRemoved(position);
                 myAdapter.notifyDataSetChanged();
                 Toast.makeText(context, " 正在删除 ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 设置点击监听
+        // 这里有疑问，重写的onClick的上下文是当前环境的吗？
+        recyclerView.setOnClickListener(new SwipeRecyclerView.OnClickListener() {
+            @Override
+            public void onClick(int position, String id) {
+                Intent intent = new Intent(context,MainActivity2.class);  // ****
+                intent.putExtra(key[0],data.get(position).get(key[0]).toString());
+                intent.putExtra(key[1],data.get(position).get(key[1]).toString());
+                intent.putExtra(key[2],Integer.parseInt(data.get(position).get(key[2]).toString()));
+                Toast.makeText(context,"跳转页面",Toast.LENGTH_LONG).show();
+                // SystemClock.sleep(1000);
+                startActivityForResult(intent, 0);
             }
         });
         

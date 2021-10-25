@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentManager = getFragmentManager();
         // transaction是事务管理方式
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.id_content, messageFragment);
-        transaction.add(R.id.id_content, contactFragment);
-        transaction.add(R.id.id_content, exploreFragment);
-        transaction.add(R.id.id_content, meFragment);
+        transaction.add(R.id.message_recyclerView, messageFragment);
+        transaction.add(R.id.message_recyclerView, contactFragment);
+        transaction.add(R.id.message_recyclerView, exploreFragment);
+        transaction.add(R.id.message_recyclerView, meFragment);
         transaction.commit();  // 添加要先提交
         hideFragmentAll(transaction);
         // 加载四个fragment之后默认显示第一个界面

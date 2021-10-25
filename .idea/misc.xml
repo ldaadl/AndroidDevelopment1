@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/MeFragment.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/MessageFragment.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.22" />
         <entry key="app/src/main/res/layout/botton.xml" value="0.33" />
         <entry key="app/src/main/res/layout/contact_fragment.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/explore_fragment.xml" value="0.18541666666666667" />
@@ -26,7 +27,11 @@
         <entry key="app/src/main/res/layout/item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_message.xml" value="0.25" />
         <entry key="app/src/main/res/layout/me_fragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/message_button.xml" value="0.25" />
         <entry key="app/src/main/res/layout/message_fragment.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/message_item1.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/message_item2.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/message_top.xml" value="0.18" />
         <entry key="app/src/main/res/layout/pull_to_refresh.xml" value="0.33" />
         <entry key="app/src/main/res/layout/top.xml" value="0.33697916666666666" />
       </map>
