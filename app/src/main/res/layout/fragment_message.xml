@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentMessage">
+    tools:context=".fragment.FragmentMessage">
 
     <!-- 给recycleView增加的父布局,这个控件提供下拉功能 -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <!--  继承于recycleView，提供左划功能  -->
-        <com.example.mywork1_lda.SwipeRecyclerView
+        <com.example.mywork1_lda.adapter.SwipeRecyclerView
             android:id="@+id/RVmessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

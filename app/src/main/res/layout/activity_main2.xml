@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity2">
+    tools:context=".activity.MainActivity2">
 
     <include layout="@layout/message_top" />
 
@@ -15,5 +15,5 @@
         android:layout_height="match_parent"
         android:layout_weight="1"/>
 
-    <include layout="@layout/message_button" />
+    <include layout="@layout/message_botton" />
 </LinearLayout>
