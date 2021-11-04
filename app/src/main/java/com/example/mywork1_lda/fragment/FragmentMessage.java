@@ -4,8 +4,10 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Build;
@@ -13,6 +15,7 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +32,7 @@ import com.example.mywork1_lda.adapter.AdapterOfMessAndCon;
 import com.example.mywork1_lda.activity.MainActivity2;
 import com.example.mywork1_lda.R;
 import com.example.mywork1_lda.adapter.SwipeRecyclerView;
+import com.example.mywork1_lda.receiver.MyReceiver;
 import com.example.mywork1_lda.service.PlayWhenSwitch;
 
 import java.util.ArrayList;
@@ -49,9 +53,6 @@ public class FragmentMessage extends Fragment {
     private NotificationCompat.Builder builder;
     private NotificationChannel channel;
 
-    // 切换界面时破放音乐的playWhenSwicth
-    private ServiceConnection connection;
-    private PlayWhenSwitch.Mybinder mybinder;
 
     public FragmentMessage() {
         // Required empty public constructor
@@ -69,6 +70,15 @@ public class FragmentMessage extends Fragment {
         context = this.getActivity();
         data = new ArrayList<Map<String, Object>>();
 
+        // 广播
+        MyReceiver myReceiver = new MyReceiver();
+        final String BROADCAST_ACTION_NAME = "com.example.MY_BROADCAST";
+        IntentFilter intentFilter = new IntentFilter();  // 意图过滤器
+        intentFilter.addAction(BROADCAST_ACTION_NAME);  // 设置接受的广播
+        context.registerReceiver(myReceiver,intentFilter);  // 动态注册广播接收者
+
+
+        // 数据
         String[] name = new String[]{"lda", "chf", "wy", "zh"};
         String[] message = new String[]{"我好帅","智力低下", "哲学家", "睿智"};
         int[] photo = new int[]{R.drawable.person1, R.drawable.person2, R.drawable.person3, R.drawable.person4};
@@ -153,14 +163,22 @@ public class FragmentMessage extends Fragment {
         recyclerView.setOnClickListener(new SwipeRecyclerView.OnClickListener() {
             @Override
             public void onClick(int position, String id) {
-
-                Intent intent = new Intent(context, MainActivity2.class);  // ****
+                // 跳转到新的页面
+                /*Intent intent = new Intent(context, MainActivity2.class);  // 实现跳转
                 intent.putExtra(key[0],data.get(position).get(key[0]).toString());
                 intent.putExtra(key[1],data.get(position).get(key[1]).toString());
                 intent.putExtra(key[2],Integer.parseInt(data.get(position).get(key[2]).toString()));
                 Toast.makeText(context,"跳转页面",Toast.LENGTH_LONG).show();
                 // SystemClock.sleep(1000);
-                startActivityForResult(intent, 0);
+                startActivityForResult(intent, 0);*/
+
+                // 发送广播以调用service和startActivity
+
+                Intent intent = new Intent(BROADCAST_ACTION_NAME);
+                intent.putExtra(key[0],data.get(position).get(key[0]).toString());
+                intent.putExtra(key[1],data.get(position).get(key[1]).toString());
+                intent.putExtra(key[2],Integer.parseInt(data.get(position).get(key[2]).toString()));
+                context.sendBroadcast(intent);
             }
         });
         

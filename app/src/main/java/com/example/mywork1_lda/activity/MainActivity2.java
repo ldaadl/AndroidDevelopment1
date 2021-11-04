@@ -6,13 +6,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mywork1_lda.R;
 import com.example.mywork1_lda.adapter.AdapterOfMessage;
+import com.example.mywork1_lda.fragment.FragmentMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;

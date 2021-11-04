@@ -4,6 +4,7 @@
   * activity 软件包 存放activity组件
     * MainActiviy 主页面
     * MainActivity2 某个聊天的详细界面
+    * LogActivity 登录页面
   * fragment 软件包 存放fragment类，四个fragment切换实现微信界面中间内容的切换
     * FragmentContact 消息界面，存放一个RecyclerView
     * FragmentContact 联系人页面，存放一个RecyclerView
@@ -14,7 +15,9 @@
     * AdapterOfMessage 绑定聊天详细界面的RecyclerView和message_item1.xml和message_item2.xml
     * SwipeRecyclerView 继承于RecyclerView 为了实现下拉刷新、左划删除和点击的效果，在fragment_message.xml中使用
   * service
-    * playWhenSwitch 进入聊天界面时播放5秒音乐 被activity_mian2调用
+    * playWhenSwitch 进入聊天界面时播放5秒音乐 在MyReceiver中被调用和关闭
+  * receiver
+    * MyReceiver 点击进入具体连天页面时向MianActivity2和playWhenSwitch发出广播调用两者
 
 ## layout文件夹下文件说明
 

@@ -47,7 +47,7 @@ public class PlayWhenSwitch extends Service {
         // TODO: Return the communication channel to the service.
         Bundle data = intent.getExtras();
         String who= data.getString("who");
-        Log.d("service",who+" onbind with service2");
+        Log.d("service",who+" onbind with service");
         // TODO: Return the communication channel to the service.
         return new Mybinder();
     }
