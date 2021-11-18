@@ -10,13 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyWork1lda">
         <activity
+            android:name=".activity.FindPassActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ChangePassActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.EnrolActivity"
+            android:exported="true" />
+
+        <provider
+            android:name=".tmp.MyContentProvider"
+            android:authorities="lda.testContentProvider"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
             android:name=".activity.LogActivity"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <receiver
@@ -35,11 +51,14 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
     </application>
 

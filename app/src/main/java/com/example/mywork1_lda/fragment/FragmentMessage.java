@@ -4,18 +4,15 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.app.Fragment;
 
-import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,13 +26,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.mywork1_lda.adapter.AdapterOfMessAndCon;
-import com.example.mywork1_lda.activity.MainActivity2;
 import com.example.mywork1_lda.R;
 import com.example.mywork1_lda.adapter.SwipeRecyclerView;
 import com.example.mywork1_lda.receiver.MyReceiver;
-import com.example.mywork1_lda.service.PlayWhenSwitch;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +41,7 @@ import java.util.Map;
 public class FragmentMessage extends Fragment {
     private SwipeRecyclerView recyclerView;
     private List<Map<String, Object>> data;
+    private List<Map<String, Object>> dataBak;  // 备份数据，所有item的数据都是直接来自与它
     private Context context;
     private AdapterOfMessAndCon myAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -68,7 +66,7 @@ public class FragmentMessage extends Fragment {
         recyclerView = view.findViewById(R.id.RVmessage);
         Log.d("mmm", String.valueOf(R.id.RVmessage));
         context = this.getActivity();
-        data = new ArrayList<Map<String, Object>>();
+        dataBak = new ArrayList<Map<String, Object>>();
 
         // 广播
         MyReceiver myReceiver = new MyReceiver();
@@ -88,9 +86,14 @@ public class FragmentMessage extends Fragment {
             item.put(key[0], name[i]);
             item.put(key[1], message[i]);
             item.put(key[2], photo[i]);
-            data.add(item);
+            dataBak.add(item);
         }
-        myAdapter = new AdapterOfMessAndCon(data, context, R.layout.item_message, key);
+        data = new ArrayList<Map<String, Object>>();
+        for(Map m:dataBak){
+            data.add(m);
+        }
+
+        myAdapter = new AdapterOfMessAndCon(dataBak, context, R.layout.item_message, key);
         // GridLayoutManager可以设置行数
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         // Horizontal是水平布局
@@ -130,6 +133,10 @@ public class FragmentMessage extends Fragment {
                     // 刷新数据
                     for (int i = 0; i < 4; i++) {
                         data.get(i).put(key[1], "消息刷新了");
+                        dataBak.clear();
+                        for(Map m:data){
+                            dataBak.add(m);
+                        }
                     }
                     // 针对数据的刷新作出反应
                     myAdapter.notifyDataSetChanged();
@@ -151,7 +158,7 @@ public class FragmentMessage extends Fragment {
             public void onRightClick(int position, String id) {
                 TextView text = view.findViewById(R.id.message);
 
-                data.remove(position);
+                dataBak.remove(position);
                 //    myAdapter.notifyItemRemoved(position);
                 myAdapter.notifyDataSetChanged();
                 Toast.makeText(context, " 正在删除 ", Toast.LENGTH_SHORT).show();
@@ -175,9 +182,9 @@ public class FragmentMessage extends Fragment {
                 // 发送广播以调用service和startActivity
 
                 Intent intent = new Intent(BROADCAST_ACTION_NAME);
-                intent.putExtra(key[0],data.get(position).get(key[0]).toString());
-                intent.putExtra(key[1],data.get(position).get(key[1]).toString());
-                intent.putExtra(key[2],Integer.parseInt(data.get(position).get(key[2]).toString()));
+                intent.putExtra(key[0], dataBak.get(position).get(key[0]).toString());
+                intent.putExtra(key[1], dataBak.get(position).get(key[1]).toString());
+                intent.putExtra(key[2],Integer.parseInt(dataBak.get(position).get(key[2]).toString()));
                 context.sendBroadcast(intent);
             }
         });
