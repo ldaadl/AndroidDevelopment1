@@ -5,7 +5,7 @@ import android.app.Application;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 
-public class BaiduMap extends Application {
+public class BaiduMapApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
