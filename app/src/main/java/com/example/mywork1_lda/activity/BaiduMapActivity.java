@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -26,7 +27,6 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.example.mywork1_lda.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 public class BaiduMapActivity extends AppCompatActivity {
     private MapView mMapView;
 
@@ -41,7 +41,6 @@ public class BaiduMapActivity extends AppCompatActivity {
     private TextView textViewLatitude;
     private TextView textViewAddress;
 
-    private FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +51,6 @@ public class BaiduMapActivity extends AppCompatActivity {
         textViewLongitude = findViewById(R.id.longitudeText2);
         textViewLatitude = findViewById(R.id.latitudeText2);
         textViewAddress = findViewById(R.id.addressText2);
-        floatingActionButton = findViewById(R.id.fab);
 
         // 地图初始化
         mMapView = findViewById(R.id.bmapView);
@@ -75,13 +73,6 @@ public class BaiduMapActivity extends AppCompatActivity {
                 mBaiduMap = mMapView.getMap();
                 //普通地图 ,mBaiduMap是地图控制器对象
                 mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
-            }
-        });
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                initLocation();
-
             }
         });
 
@@ -111,13 +102,16 @@ public class BaiduMapActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+
         // 退出时销毁定位
         mLocClient.stop();
         // 关闭定位图层
         mBaiduMap.setMyLocationEnabled(false);
         // 在activity执行onDestroy时必须调用mMapView.onDestroy()
         mMapView.onDestroy();
+        mMapView = null;
+        super.onDestroy();
+
     }
 
     @Override
@@ -132,17 +126,15 @@ public class BaiduMapActivity extends AppCompatActivity {
        mMapView.onResume();
     }
 
-    /**
-     * 定位初始化
-     */
+
     public void initLocation(){
 
         // 开启定位图层
         mBaiduMap.setMyLocationEnabled(true);
         // 定位初始化
         mLocClient = new LocationClient(this);
-        MyLocationListener myListener = new MyLocationListener();
-        mLocClient.registerLocationListener(myListener);
+
+
         LocationClientOption option = new LocationClientOption();
         // 打开gps
         option.setOpenGps(true);
@@ -150,12 +142,14 @@ public class BaiduMapActivity extends AppCompatActivity {
         option.setCoorType("bd09ll");
         option.setScanSpan(1000);
         mLocClient.setLocOption(option);
+
+        // 注册监听器
+        MyLocationListener myListener = new MyLocationListener();
+        mLocClient.registerLocationListener(myListener);
+
         mLocClient.start();
     }
 
-    /**
-     * 定位SDK监听函数
-     */
     public class MyLocationListener implements BDLocationListener {
 
         @Override
@@ -173,12 +167,11 @@ public class BaiduMapActivity extends AppCompatActivity {
                     .build();
             // 设置定位数据, 只有先允许定位图层后设置数据才会生效
             mBaiduMap.setMyLocationData(locData);
+            LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
             if (isFirstLoc) {
                 isFirstLoc = false;
-                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                MapStatus.Builder builder = new MapStatus.Builder();
-                builder.target(latLng).zoom(20.0f);
-                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+                //给地图设置状态
+                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newLatLng(ll));
             }
 
             textViewLongitude.setText(location.getLongitude()+"");
@@ -190,3 +183,91 @@ public class BaiduMapActivity extends AppCompatActivity {
     }
 
 }
+/*
+public class BaiduMapActivity extends AppCompatActivity {
+    private MapView mapView = null;
+    private BaiduMap mBaiduMap = null;
+    ;
+    private LocationClient mLocationClient = null;
+    private boolean isFirstLocate = true;
+    //private MyLocationConfiguration.LocationMode locationMode;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_baidu_map);
+
+        mapView = findViewById(R.id.bmapView);
+
+        mBaiduMap = mapView.getMap();
+        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
+        mBaiduMap.setMyLocationEnabled(true);
+
+        //定位初始化
+        mLocationClient = new LocationClient(this);
+
+//通过LocationClientOption设置LocationClient相关参数
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true); // 打开gps
+        option.setCoorType("bd09ll"); // 设置坐标类型
+        option.setScanSpan(1000);
+
+//设置locationClientOption
+        mLocationClient.setLocOption(option);
+
+//注册LocationListener监听器
+        MyLocationListener myLocationListener = new MyLocationListener();
+        mLocationClient.registerLocationListener(myLocationListener);
+//开启地图定位图层
+        mLocationClient.start();
+
+
+    }
+
+
+    public class MyLocationListener extends BDAbstractLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null || mapView == null) {
+                return;
+            }
+
+            LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+            if (isFirstLocate) {
+                isFirstLocate = false;
+                //给地图设置状态
+                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newLatLng(ll));
+            }
+
+            MyLocationData locData = new MyLocationData.Builder()
+                    .accuracy(location.getRadius())
+                    // 此处设置开发者获取到的方向信息，顺时针0-360
+                    .direction(location.getDirection()).latitude(location.getLatitude())
+                    .longitude(location.getLongitude()).build();
+            mBaiduMap.setMyLocationData(locData);
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLocationClient.stop();
+        mBaiduMap.setMyLocationEnabled(false);
+        mapView.onDestroy();
+        mapView = null;
+    }
+}*/

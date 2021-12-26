@@ -4,6 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.17447916666666666" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/activity_baidu_map.xml" value="0.20199275362318841" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/activity_bing_paper.xml" value="0.176" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/activity_change_pass.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/activity_enrol.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/activity_log.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/activity_main.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/activity_main2.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/botton.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/content_find_pass.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/fragment_contact.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/fragment_explore.xml" value="0.213768115942029" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/fragment_first.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/fragment_me.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/fragment_message.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/fragment_second.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/message_top.xml" value="0.1296875" />
+        <entry key="..\:/androidProject/AndroidDevelopment1-master/app/src/main/res/layout/top.xml" value="0.1296875" />
         <entry key="app/src/main/res/drawable/border1.xml" value="0.17552083333333332" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.17552083333333332" />
         <entry key="app/src/main/res/layout/ContactFragment.xml" value="0.18541666666666667" />

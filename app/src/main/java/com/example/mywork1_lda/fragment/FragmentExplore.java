@@ -1,6 +1,5 @@
 package com.example.mywork1_lda.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,13 +12,16 @@ import android.widget.LinearLayout;
 
 import com.example.mywork1_lda.R;
 import com.example.mywork1_lda.activity.BaiduMapActivity;
+import com.example.mywork1_lda.activity.BingPaperActivity;
 
 public class FragmentExplore extends Fragment {
-    private LinearLayout linearLayout;
+    private LinearLayout baiduLinearLayout;
+    private LinearLayout bingLinearLayout;
 
     public FragmentExplore() {
         // Required empty public constructor
     }
+
 
 
 
@@ -29,13 +31,22 @@ public class FragmentExplore extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_explore, container, false);
 
-        linearLayout = view.findViewById(R.id.baiduMapLayout);
+        baiduLinearLayout = view.findViewById(R.id.baiduMapLayout);
+        bingLinearLayout = view.findViewById(R.id.bingPaperLayout);
 
         // 点击百度地图功能，跳转页面
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        baiduLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), BaiduMapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        bingLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), BingPaperActivity.class);
                 startActivity(intent);
             }
         });

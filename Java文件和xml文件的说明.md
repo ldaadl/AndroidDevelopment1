@@ -9,6 +9,7 @@
     * FindPassActivity 找回密码的界面
     * changePassActivity 更改密码的界面
     * BaiduMapActivity 调用百度地图的界面
+    * BingPaperActivity 显示必应壁纸的界面
   * fragment 软件包 存放fragment类，四个fragment切换实现微信界面中间内容的切换
     * FragmentContact 消息界面，存放一个RecyclerView
     * FragmentContact 联系人页面，存放一个RecyclerView
@@ -52,3 +53,4 @@
 * message_top.xml和message_botton.xml是activity_main2.xml的顶栏和低栏
 * message_item1.xml 和 message_item2.xml分别表示聊天的对方和自己的消息
 * activity_baidu.map.xml 调用百度地图的界面
+* activity_bing_paper.xml 必应壁纸的界面
